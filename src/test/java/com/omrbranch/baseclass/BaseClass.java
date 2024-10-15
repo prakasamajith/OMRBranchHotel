@@ -14,6 +14,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -33,6 +34,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BaseClass {
 	public static WebDriver driver;
 	Select select;
+	Alert alert;
+	
+	
+	public byte[]  screenshot() {
+		TakesScreenshot screenshot = (TakesScreenshot) driver;
+		byte[] b = screenshot.getScreenshotAs(OutputType.BYTES);
+		return b;
+	}
 
 	public void elementSendKeysEnter(WebElement element, String data) {
 		elementVisibility(element);
@@ -129,7 +138,7 @@ public class BaseClass {
 	}
 
 	public static void implicitWait() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 	}
 
 	// public static void browserLaunch() {
@@ -311,4 +320,8 @@ public class BaseClass {
 		executor.executeScript("argument[0].click()", element);
 	}
 
+	public void confirmAlert() {
+		alert = driver.switchTo().alert();
+		alert.accept();
+	}
 }

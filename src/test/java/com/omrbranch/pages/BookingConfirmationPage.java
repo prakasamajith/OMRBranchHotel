@@ -4,9 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.omrbranch.baseclass.BaseClasses;
+import com.omrbranch.baseclass.BaseClass;
 
-public class BookingConfirmationPage extends BaseClasses{
+public class BookingConfirmationPage extends BaseClass{
 
 	
 	public BookingConfirmationPage() {

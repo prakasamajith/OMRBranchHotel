@@ -1,6 +1,7 @@
-@Login
+
 Feature: Verifying OMRBranch Hotel Login Module
 
+ @Login
   Scenario Outline: Verifying login with valid credentials without Enter Key
     Given User is on the OMR Branch hotel page
     When User login "<userName>" and "<password>"
@@ -8,7 +9,7 @@ Feature: Verifying OMRBranch Hotel Login Module
 
     Examples: 
       | userName                | password    |
-      | ajithprakasam@gmail.com | Prakasam@77 |
+      | ajithprakasam@gmail.com | Prakasa@77 |
 
   Scenario Outline: Verifying login with valid credentials with Enter Key using Robot Class
     Given User is on the OMR Branch hotel page

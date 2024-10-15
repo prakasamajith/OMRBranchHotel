@@ -15,11 +15,8 @@ public class TC1_LoginStep extends BaseClass {
 	PageObjectManager pom = new PageObjectManager();
 
 	@Given("User is on the OMR Branch hotel page")
-	public void userIsOnTheOMRBranchHotelPage() throws FileNotFoundException, IOException {
-		browserLaunch(getPropertyFileValue("browser"));
-		enterApplnUrl(getPropertyFileValue("url"));
-		maximizeWindow();
-		implicitWait();
+	public void userIsOnTheOMRBranchHotelPage(){
+
 	}
 
 	@When("User login {string} and {string}")
@@ -29,9 +26,10 @@ public class TC1_LoginStep extends BaseClass {
 
 	@Then("User should verify success message after login {string}")
 	public void userShouldVerifySuccessMessageAfterLogin(String expLoginSuccessMsgText) {
-		String actLoginSuccessMsgText = pom.getSearchHotelPage().getLoginSuccessMsgText();
+		String actLoginSuccessMsgText = pom.getLoginPage().getLoginSuccessMsgText();
 		Assert.assertEquals("Verify after login success msg", expLoginSuccessMsgText, actLoginSuccessMsgText);
 		System.out.println(actLoginSuccessMsgText);
+
 	}
 
 	@When("User login {string} and {string} with enter key")
@@ -42,7 +40,9 @@ public class TC1_LoginStep extends BaseClass {
 	@Then("User should verify error message after login {string}")
 	public void userShouldVerifyErrorMessageAfterLogin(String expLoginErrorMsgText) {
 		String actLoginErrorMsgText = pom.getLoginPage().getInvalidErrorMsg();
-		boolean contains = actLoginErrorMsgText.contains(actLoginErrorMsgText);
+		boolean contains = actLoginErrorMsgText.contains(expLoginErrorMsgText);
+
 		Assert.assertTrue("Verify after login error msg contains", contains);
 	}
+
 }

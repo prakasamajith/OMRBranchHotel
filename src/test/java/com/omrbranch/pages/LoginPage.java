@@ -26,9 +26,16 @@ public class LoginPage extends BaseClass {
 
 	@FindBy(id = "errorMessage")
 	private WebElement invalidLogin;
-	
+
 	@FindBy(xpath = "//h3[text()=\"Hotel Booking\"]")
 	private WebElement hotelBooking;
+	
+	@FindBy(xpath = "//a[@data-testid='username']")
+	private WebElement textLoginSuccessMsg;
+
+	public WebElement getTextLoginSuccessMsg() {
+		return textLoginSuccessMsg;
+	}
 
 	public void setHotelBooking(WebElement hotelBooking) {
 		this.hotelBooking = hotelBooking;
@@ -58,20 +65,23 @@ public class LoginPage extends BaseClass {
 		elementSendKeys(txtEmail, userName);
 		elementSendKeys(txtPassword, password);
 		elementClick(btnLogin);
-		elementClick(hotelBooking);
 	}
 
 	public void loginWithEnterKey(String userName, String password) throws AWTException {
 		elementSendKeys(txtEmail, userName);
 		elementSendKeys(txtPassword, password);
 		pressEnter();
-		elementClick(hotelBooking);
 	}
 
 	public String getInvalidErrorMsg() {
 		String d = elementGetText(invalidLogin);
-		String replace = d.replace(" Click here to reset your password","");
+		String replace = d.replace(" Click here to reset your password", "");
 		System.out.println(replace);
 		return d;
+	}
+
+	public String getLoginSuccessMsgText() {
+		String elementGetText = elementGetText(textLoginSuccessMsg);
+		return elementGetText;
 	}
 }

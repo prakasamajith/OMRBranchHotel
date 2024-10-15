@@ -1,94 +1,97 @@
 package com.omrbranch.pages;
 
+import java.util.List;
+import java.util.Map;
+
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.omrbranch.baseclass.BaseClasses;
+import com.omrbranch.baseclass.BaseClass;
 
-public class BookHotelPage extends BaseClasses {
+public class BookHotelPage extends BaseClass {
 
 	public BookHotelPage() {
 		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(xpath="//h2[text()='Book Hotel - Hyatt Regency Chennai Suite']")
+
+	@FindBy(xpath = "//h2[text()='Book Hotel - Hyatt Regency Chennai Suite']")
 	private WebElement txtHotelName;
-	
-	@FindBy(xpath="//strong[text()='$ 6,136']")
+
+	@FindBy(xpath = "//strong[text()='$ 6,136']")
 	private WebElement txtHotelprice;
-	
-	
-	@FindBy(id="own")
+
+	@FindBy(id = "own")
 	private WebElement btnMyself;
-	
-	@FindBy(id="user_title")
+
+	@FindBy(id = "user_title")
 	private WebElement salutation;
-	
-	@FindBy(id="first_name")
+
+	@FindBy(id = "first_name")
 	private WebElement txtFirstname;
-	
-	@FindBy(id="last_name")
+
+	@FindBy(id = "last_name")
 	private WebElement txtLastname;
-	
-	@FindBy(id="user_phone")
+
+	@FindBy(id = "user_phone")
 	private WebElement txtPhoneno;
-	
-	@FindBy(id="user_email")
+
+	@FindBy(id = "user_email")
 	private WebElement txtUseremail;
-	
-	@FindBy(id="gst")
+
+	@FindBy(id = "gst")
 	private WebElement btnGst;
-	
-	@FindBy(id="gst_registration")
+
+	@FindBy(id = "gst_registration")
 	private WebElement txtGstNumber;
-	
-	@FindBy(id="company_name")
+
+	@FindBy(id = "company_name")
 	private WebElement txtCompanyName;
-	
-	@FindBy(id="company_address")
+
+	@FindBy(id = "company_address")
 	private WebElement txtCompanyAddress;
-	
-	@FindBy(id="step1next")
+
+	@FindBy(id = "step1next")
 	private WebElement btnNext;
-	
-	@FindBy(id="smoking")
+
+	@FindBy(id = "smoking")
 	private WebElement btnSmoke;
-	
-	@FindBy(id="high")
+
+	@FindBy(id = "high")
 	private WebElement btnHighFloor;
-	
-	@FindBy(id="other_request")
+
+	@FindBy(id = "other_request")
 	private WebElement anyOtherRequest;
-	
-	@FindBy(id="step2next")
+
+	@FindBy(id = "step2next")
 	private WebElement btnNext2;
-	
-	@FindBy(xpath="//div[@class='credit-card pm']")
+
+	@FindBy(xpath = "//div[@class='credit-card pm']")
 	private WebElement btnPayOptions;
-	
-	@FindBy(id="payment_type")
+
+	@FindBy(id = "payment_type")
 	private WebElement paymentType;
-	
-	@FindBy(id="card_type")
+
+	@FindBy(id = "card_type")
 	private WebElement selectCard;
-	
-	@FindBy(id="card_no")
+
+	@FindBy(id = "card_no")
 	private WebElement cardNo;
-	
-	@FindBy(id="card_name")
+
+	@FindBy(id = "card_name")
 	private WebElement cardName;
-	
-	@FindBy(id="card_month")
+
+	@FindBy(id = "card_month")
 	private WebElement cardMonth;
-	
-	@FindBy(id="card_year")
+
+	@FindBy(id = "card_year")
 	private WebElement cardYear;
-	
-	@FindBy(id="cvv")
+
+	@FindBy(id = "cvv")
 	private WebElement cardCvv;
-	
-	@FindBy(id="submitBtn")
+
+	@FindBy(id = "submitBtn")
 	private WebElement submitBtn;
 
 	public WebElement getBtnMyself() {
@@ -194,4 +197,34 @@ public class BookHotelPage extends BaseClasses {
 	public WebElement getTxtHotelprice() {
 		return txtHotelprice;
 	}
+
+	public void guestDetails(String txtsalutation, String firstName, String lastName, String mobile, String email) {
+		elementClick(btnMyself);
+		elementSendKeys(salutation, txtsalutation);
+		elementSendKeys(txtFirstname, firstName);
+		elementSendKeys(txtLastname, lastName);
+		elementSendKeys(txtPhoneno, mobile);
+		elementSendKeys(txtUseremail, email);
+
+	}
+
+	public void gstDetails(String regNo, String companyName, String companyAddress) {
+		elementClick(btnGst);
+		elementSendKeys(txtGstNumber, regNo);
+		elementSendKeys(txtCompanyName, companyName);
+		elementSendKeys(txtCompanyAddress, companyAddress);
+		elementClick(btnNext);
+	}
+	
+	public void specialRequest(String specialRequest) {
+		elementSendKeys(anyOtherRequest, specialRequest);
+		elementClick(btnNext2);
+	}
+	
+	
+	public void cardDetails(String cardType, io.cucumber.datatable.DataTable dataTable) {
+		elementClick(btnPayOptions);
+	
+	}
+
 }

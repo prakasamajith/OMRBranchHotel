@@ -4,9 +4,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.omrbranch.baseclass.BaseClasses;
+import com.omrbranch.baseclass.BaseClass;
 
-public class MyBookingPage extends BaseClasses {
+
+public class MyBookingPage extends BaseClass {
 
 	public MyBookingPage() {
 		PageFactory.initElements(driver, this);

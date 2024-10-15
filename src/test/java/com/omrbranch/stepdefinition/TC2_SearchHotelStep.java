@@ -11,11 +11,18 @@ public class TC2_SearchHotelStep {
 
 	PageObjectManager pom = new PageObjectManager();
 
+	@Then("User click Search button")
+	public void userClickSearchButton() {
+		pom.getSearchHotelPage().clickSearchButton();
+	}
+
 	@When("User search hotel {string},{string},{string},{string},{string},{string},{string} and {string}")
 	public void userSearchHotelAnd(String state, String city, String roomType, String checkIn, String checkOut,
 			String noOfRooms, String adultsCount, String childCount) {
+
 		pom.getSearchHotelPage().searchHotel(state, city, roomType, checkIn, checkOut, noOfRooms, adultsCount,
 				childCount);
+
 		pom.getSearchHotelPage().clickSearchButton();
 	}
 
@@ -32,11 +39,6 @@ public class TC2_SearchHotelStep {
 	public void userSearchHotelAnd(String state, String city, String checkIn, String checkOut, String noOfRooms,
 			String adultsCount) {
 		pom.getSearchHotelPage().searchHotelMandatory(state, city, checkIn, checkOut, noOfRooms, adultsCount);
-		pom.getSearchHotelPage().clickSearchButton();
-	}
-
-	@Then("User click Search button")
-	public void userClickSearchButton() {
 		pom.getSearchHotelPage().clickSearchButton();
 	}
 
@@ -67,30 +69,37 @@ public class TC2_SearchHotelStep {
 	}
 
 	@When("User click sort from low to high")
-	public void userClickSortFromLowToHigh() {
+	public void userClickSortFromLowToHigh() throws InterruptedException {
 		pom.getSearchHotelPage().clickSort();
 	}
 
 	@Then("User should verify after sorting that price are listed from low to high")
 	public void userShouldVerifyAfterSortingThatPriceAreListedFromLowToHigh() {
 
+		pom.getSearchHotelPage().priceLowToHighVerify();
+
 	}
 
 	@When("User click sort from Descending order")
-	public void userClickSortFromDescendingOrder() {
+	public void userClickSortFromDescendingOrder() throws InterruptedException {
 		pom.getSearchHotelPage().clickDecendingOrder();
 	}
 
 	@Then("User should verify after sorting that name in Descending order")
 	public void userShouldVerifyAfterSortingThatNameInDescendingOrder() {
+
+		pom.getSearchHotelPage().verifyDecendingNameList();
+
 	}
 
 	@When("User click Suite room type")
-	public void userClickSuiteRoomType() {
+	public void userClickSuiteRoomType() throws InterruptedException {
+		pom.getSearchHotelPage().clickSuite();
 	}
 
 	@Then("User should verify after sorting that Suite room type is listed")
 	public void userShouldVerifyAfterSortingThatSuiteRoomTypeIsListed() {
+		pom.getSearchHotelPage().verifySuiteList();
 	}
 
 	@When("User enter {string} and {string}")
@@ -102,7 +111,10 @@ public class TC2_SearchHotelStep {
 	}
 
 	@Then("User should verify the header contains {string}")
-	public void userShouldVerifyTheHeaderContains(String string) {
+	public void userShouldVerifyTheHeaderContains(String expRoomType) {
+
+		String roomTypesVerify = pom.getSearchHotelPage().roomTypesVerify();
+		Assert.assertEquals("Verify after search list of rooms displayed", expRoomType, roomTypesVerify);
 	}
 
 }

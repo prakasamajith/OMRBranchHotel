@@ -11,8 +11,9 @@ import io.cucumber.junit.CucumberOptions;
 import io.cucumber.junit.CucumberOptions.SnippetType;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(tags = ("@Search"), dryRun = !true, plugin = { "pretty",
-		"json:target//output.json" }, stepNotifications = true, snippets = SnippetType.CAMELCASE,
+@CucumberOptions(tags = ("@Login"), dryRun = !true,
+plugin = { "pretty","json:target//output.json","rerun:src/test/resources/rerun.txt"},
+stepNotifications = true, snippets = SnippetType.CAMELCASE,
 		features = "src\\test\\resources",
 		glue = {"com.omrbranch.stepdefinition" })
 
