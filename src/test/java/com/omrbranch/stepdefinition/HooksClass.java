@@ -27,6 +27,6 @@ public class HooksClass extends BaseClass {
 		if (scenario.isFailed()) {
 			scenario.attach(screenshot(), "images/png", "Every Scenario");
 		}
-		closeWindow();
+//		closeWindow();
 	}
 }

@@ -1,66 +1,79 @@
 package com.omrbranch.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.omrbranch.baseclass.BaseClass;
 
-
 public class MyBookingPage extends BaseClass {
 
 	public MyBookingPage() {
 		PageFactory.initElements(driver, this);
 	}
-	
-	
-	@FindBy(name="search")
-	private WebElement searchOrderNo;
-	
-	@FindBy(xpath="(//span[contains(text(),'#')])[2]")
+
+	@FindBy(xpath = "//h4[contains(text(),'Bookings')]")
+	private WebElement bookings;
+
+	@FindBy(name = "search")
+	private WebElement searchTextBox;
+
+	@FindBy(xpath = "(//span[contains(text(),'#')])[2]")
 	private WebElement bookedOrderNo;
-	
-	@FindBy(xpath="//h5[contains(text(),'Hyatt Regency')")
+
+	@FindBy(xpath = "//h5[contains(text(),'Taj')]")
 	private WebElement boookedHotelName;
-	
-	@FindBy(xpath="//strong[@class='total-prize']")
-	private WebElement price1;
-	
-	@FindBy(xpath="//button[text()='Edit']")
+
+	@FindBy(xpath = "//strong[@class='total-prize']")
+	private WebElement price;
+
+	@FindBy(xpath = "//button[text()='Edit']")
 	private WebElement editBooking;
-	
-	@FindBy(name="check_in")
+
+	@FindBy(name = "check_in")
 	private WebElement editCheckin;
-	
-	@FindBy(xpath="//button[text()='Confirm']")
+
+	@FindBy(xpath = "//button[text()='Confirm']")
 	private WebElement btnConfirm;
-	
-	@FindBy(xpath="//li[contains(text(),'Booking updated')]")
+
+	@FindBy(xpath = "//li[contains(text(),'Booking updated')]")
 	private WebElement bookingUpdated;
-	
-	
-	//cancel booking
-	
-	@FindBy(xpath="search")
+
+	// cancel booking
+
+	@FindBy(xpath = "search")
 	private WebElement searchOrderNo1;
-	
-	@FindBy(xpath="(//span[contains(text(),'#')])[2]")
+
+	@FindBy(xpath = "(//span[contains(text(),'#')])[2]")
 	private WebElement bookedOrderNo1;
-	
-	@FindBy(xpath="//h5[contains(text(),'Hyatt Regency')]")
+
+	@FindBy(xpath = "//h5[contains(text(),'Hyatt Regency')]")
 	private WebElement hotelName;
-	
-	@FindBy(xpath="//strong[@class='total-prize']")
+
+	@FindBy(xpath = "//strong[@class='total-prize']")
 	private WebElement price2;
-	
-	@FindBy(xpath="(//a[text()='Cancel'])[1]")
+
+	@FindBy(xpath = "(//a[text()='Cancel'])[1]")
 	private WebElement btnCancel;
-	
-	@FindBy(xpath="//li[text()='Your booking cancelled successfully']")
+
+	@FindBy(xpath = "//li[text()='Your booking cancelled successfully']")
 	private WebElement cancelBooking;
 
-	public WebElement getSearchOrderNo() {
-		return searchOrderNo;
+	@FindBy(xpath = "//div[@id='bookinglist']//button[text()='Edit']")
+	private List<WebElement> allEditBtn;
+
+	public WebElement getBookings() {
+		return bookings;
+	}
+
+	public List<WebElement> getAllEditBtn() {
+		return allEditBtn;
+	}
+
+	public WebElement getSearchTextBox() {
+		return searchTextBox;
 	}
 
 	public WebElement getBookedOrderNo() {
@@ -71,8 +84,8 @@ public class MyBookingPage extends BaseClass {
 		return boookedHotelName;
 	}
 
-	public WebElement getPrice1() {
-		return price1;
+	public WebElement getPrice() {
+		return price;
 	}
 
 	public WebElement getEditBooking() {
@@ -114,5 +127,65 @@ public class MyBookingPage extends BaseClass {
 	public WebElement getCancelBooking() {
 		return cancelBooking;
 	}
-	
+
+	public String verifyBookingsText() {
+		String booking = elementGetText(bookings);
+		System.out.println(booking);
+		return booking;
+	}
+
+	public void searchOrderId() {
+		String orderIdNumber = BookingConfirmationPage.saveOrderId;
+		elementSendKeysEnter(searchTextBox, orderIdNumber);
+	}
+
+	public String orderIdVerify() {
+		String bookedOrderId = elementGetText(bookedOrderNo);
+		return bookedOrderId;
+	}
+
+	public String bookedHotelNameVerify() {
+		String bookedHotel = elementGetText(boookedHotelName);
+		return bookedHotel;
+	}
+
+	public String bookedHotelPriceVerify() {
+		String bookedPrice = elementGetText(price);
+		return bookedPrice;
+	}
+
+	public void modifyDate(String modifyDate) throws InterruptedException {
+		Thread.sleep(2000);
+		elementClick(editBooking);
+		Thread.sleep(2000);
+		elementClear(editCheckin);
+		elementSendKeys(editCheckin, modifyDate);
+		elementClick(btnConfirm);
+	}
+
+	public String bookingUpdatedSuccess() {
+		String bookingUpdatedSuccessMsgTxt = elementGetText(bookingUpdated);
+		return bookingUpdatedSuccessMsgTxt;
+	}
+
+	public void searchNewOrderId(String id) {
+		elementSendKeys(searchTextBox, id);
+	}
+
+	public void firstDisplayedOrderId(String modifyCheckInDate) {
+		WebElement firstHotelEditBtn = allEditBtn.get(0);
+		elementClick(firstHotelEditBtn);
+		elementClear(editCheckin);
+		elementSendKeys(editCheckin, modifyCheckInDate);
+		elementClick(btnConfirm);
+	}
+
+	public void lastDisplayedOrderId(String modifyCheckInDate) {
+		int allEditBtnSize = allEditBtn.size();
+		WebElement lastHotelEditBtn = allEditBtn.get(allEditBtnSize-1);
+		elementClick(lastHotelEditBtn);
+		elementClear(editCheckin);
+		elementSendKeys(editCheckin, modifyCheckInDate);
+		elementClick(btnConfirm);
+	}
 }

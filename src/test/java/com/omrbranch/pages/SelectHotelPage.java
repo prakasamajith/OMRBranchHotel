@@ -91,7 +91,8 @@ public class SelectHotelPage extends BaseClass {
 	public void lastHotelName() {
 		int size = allHotelName.size();
 		WebElement lastHotel = allHotelName.get(size - 1);
-		lastHotelName = lastHotel.getText();
+		String lastHotelText = lastHotel.getText();
+		lastHotelName = lastHotelText.substring(0, 14);
 		System.out.println(lastHotelName);
 	}
 
@@ -103,11 +104,13 @@ public class SelectHotelPage extends BaseClass {
 	}
 
 	public void clicklastHotel() throws InterruptedException {
+		Thread.sleep(1000);
 		int size2 = btnClickContinue.size();
 		WebElement btnContinue = btnClickContinue.get(size2 - 1);
 		elementClick(btnContinue);
 		Thread.sleep(1000);
 		confirmAlert();
+		Thread.sleep(500);
 	}
 
 	public String verifyBookHotelText() {

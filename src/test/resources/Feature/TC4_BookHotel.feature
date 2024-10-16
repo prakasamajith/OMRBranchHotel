@@ -1,6 +1,6 @@
+ @Book
 Feature: Verifying OMR Branch Hotel Book Hotel Module
 
-  @Book
   Scenario Outline: Book hotel including GST-Card(credit card)-With special request
     Given User is on the OMR Branch hotel page
     When User login "<userName>" and "<password>"
@@ -37,6 +37,7 @@ Feature: Verifying OMR Branch Hotel Book Hotel Module
     Then User should verify after select success message "Book Hotel"
     When User add Guest Details "<Select Salutation>","<First Name>","<Last Name>","<Mobile No.>" and "<Email>"
     And User add GST Details "<Enter Registration No.>","<Enter Company Name>" and "<Enter Company Address>"
+    And User should not Enter any special request
     And User enter payment details, procced with Card Type "<Card Type>"
       | Select Card | Card No          | Card Name | Month | Year | CVV |
       | Visa        | 5555555555552223 | xxxxx     | July  | 2025 | 123 |
@@ -49,7 +50,7 @@ Feature: Verifying OMR Branch Hotel Book Hotel Module
     Examples: 
       | userName                | password    | state      | city    | roomType | checkIn    | check-out  | No of Room | No of Adults | No of Childs | Select Salutation | First Name | Last Name | Mobile No. | Email                   | Enter Registration No. | Enter Company Name     | Enter Company Address | Card Type   |
       | ajithprakasam@gmail.com | Prakasam@77 | Tamil Nadu | Chennai | Standard | 2024-11-11 | 2024-11-14 |          2 |            2 |            2 | Mr                | Prakasam   | Manickam  | 9600809646 | ajithprakasam@gmail.com |             9043592058 | Greens Tech OMR Branch | Thoraipakkam          | Credit Card |
-
+ 
   Scenario Outline: Book hotel without GST-Card(credit card)-with special request
     Given User is on the OMR Branch hotel page
     When User login "<userName>" and "<password>"
@@ -60,6 +61,7 @@ Feature: Verifying OMR Branch Hotel Book Hotel Module
     And User select the last hotel and accept the alert
     Then User should verify after select success message "Book Hotel"
     When User add Guest Details "<Select Salutation>","<First Name>","<Last Name>","<Mobile No.>" and "<Email>"
+    And User proceed without GST details
     And User add Special Request "<Request>"
     And User enter payment details, procced with Card Type "<Card Type>"
       | Select Card | Card No          | Card Name | Month | Year | CVV |
@@ -84,6 +86,8 @@ Feature: Verifying OMR Branch Hotel Book Hotel Module
     And User select the last hotel and accept the alert
     Then User should verify after select success message "Book Hotel"
     When User add Guest Details "<Select Salutation>","<First Name>","<Last Name>","<Mobile No.>" and "<Email>"
+    And User proceed without GST details
+    And User should not Enter any special request
     And User enter payment details, procced with Card Type "<Card Type>"
       | Select Card | Card No          | Card Name | Month | Year | CVV |
       | Visa        | 5555555555552223 | xxxxx     | July  | 2025 | 123 |
@@ -148,6 +152,7 @@ Feature: Verifying OMR Branch Hotel Book Hotel Module
     Then User should verify after select success message "Book Hotel"
     When User add Guest Details "<Select Salutation>","<First Name>","<Last Name>","<Mobile No.>" and "<Email>"
     And User add GST Details "<Enter Registration No.>","<Enter Company Name>" and "<Enter Company Address>"
+    And User should not Enter any special request
     And User enter upi details "<upiId>" and click submit
     And User should verify after hotel booking success message "Booking is Confirmed" and save the order ID
     Then User should verify same selected Hotel is booked or not
@@ -166,6 +171,7 @@ Feature: Verifying OMR Branch Hotel Book Hotel Module
     And User select the last hotel and accept the alert
     Then User should verify after select success message "Book Hotel"
     When User add Guest Details "<Select Salutation>","<First Name>","<Last Name>","<Mobile No.>" and "<Email>"
+    And User proceed without GST details
     And User add Special Request "<Request>"
     And User enter upi details "<upiId>" and click submit
     And User should verify after hotel booking success message "Booking is Confirmed" and save the order ID
@@ -185,6 +191,8 @@ Feature: Verifying OMR Branch Hotel Book Hotel Module
     And User select the last hotel and accept the alert
     Then User should verify after select success message "Book Hotel"
     When User add Guest Details "<Select Salutation>","<First Name>","<Last Name>","<Mobile No.>" and "<Email>"
+    And User proceed without GST details
+    And User should not Enter any special request
     And User enter upi details "<upiId>" and click submit
     And User should verify after hotel booking success message "Booking is Confirmed" and save the order ID
     Then User should verify same selected Hotel is booked or not

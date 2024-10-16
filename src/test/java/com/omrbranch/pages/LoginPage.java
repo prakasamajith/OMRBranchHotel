@@ -65,12 +65,14 @@ public class LoginPage extends BaseClass {
 		elementSendKeys(txtEmail, userName);
 		elementSendKeys(txtPassword, password);
 		elementClick(btnLogin);
+		elementClick(hotelBooking);
 	}
 
 	public void loginWithEnterKey(String userName, String password) throws AWTException {
 		elementSendKeys(txtEmail, userName);
 		elementSendKeys(txtPassword, password);
 		pressEnter();
+		elementClick(hotelBooking);
 	}
 
 	public String getInvalidErrorMsg() {

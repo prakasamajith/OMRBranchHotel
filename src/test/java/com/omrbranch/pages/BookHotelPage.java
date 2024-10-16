@@ -16,11 +16,14 @@ public class BookHotelPage extends BaseClass {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//h2[text()='Book Hotel - Hyatt Regency Chennai Suite']")
+	@FindBy(xpath = "//p[contains(text(),'Hotel')]")
 	private WebElement txtHotelName;
 
-	@FindBy(xpath = "//strong[text()='$ 6,136']")
+	@FindBy(xpath = "//strong[@class=\"total-prize\"]")
 	private WebElement txtHotelprice;
+
+	@FindBy(xpath = "//div[@id='hotellist']//h5")
+	private List<WebElement> allHotelName;
 
 	@FindBy(id = "own")
 	private WebElement btnMyself;
@@ -93,6 +96,80 @@ public class BookHotelPage extends BaseClass {
 
 	@FindBy(id = "submitBtn")
 	private WebElement submitBtn;
+
+	@FindBy(id = "step2next")
+	private WebElement splReqNextBtn;
+
+	@FindBy(id = "invalid-payment_type")
+	private WebElement paymentTypeError;
+
+	@FindBy(id = "invalid-card_type")
+	private WebElement cardTypeError;
+
+	@FindBy(id = "invalid-card_no")
+	private WebElement cardNoError;
+
+	@FindBy(id = "invalid-card_name")
+	private WebElement cardNameError;
+
+	@FindBy(id = "invalid-card_month")
+	private WebElement cardMonthError;
+
+	@FindBy(id = "invalid-cvv")
+	private WebElement cardCvvError;
+
+	@FindBy(xpath = "//p[contains(text(),'Bank Account')]")
+	private WebElement upiClick;
+
+	@FindBy(id = "upi_id")
+	private WebElement upiTextBox;
+
+	@FindBy(id = "invalid-upi")
+	private WebElement invalidUpiError;
+
+	public WebElement getInvalidUpiError() {
+		return invalidUpiError;
+	}
+
+	public WebElement getUpiClick() {
+		return upiClick;
+	}
+
+	public WebElement getUpiTextBox() {
+		return upiTextBox;
+	}
+
+	public WebElement getPaymentTypeError() {
+		return paymentTypeError;
+	}
+
+	public WebElement getCardTypeError() {
+		return cardTypeError;
+	}
+
+	public WebElement getCardNoError() {
+		return cardNoError;
+	}
+
+	public WebElement getCardNameError() {
+		return cardNameError;
+	}
+
+	public WebElement getCardMonthError() {
+		return cardMonthError;
+	}
+
+	public WebElement getCardCvvError() {
+		return cardCvvError;
+	}
+
+	public WebElement getSplReqNextBtn() {
+		return splReqNextBtn;
+	}
+
+	public List<WebElement> getAllHotelName() {
+		return allHotelName;
+	}
 
 	public WebElement getBtnMyself() {
 		return btnMyself;
@@ -215,16 +292,76 @@ public class BookHotelPage extends BaseClass {
 		elementSendKeys(txtCompanyAddress, companyAddress);
 		elementClick(btnNext);
 	}
-	
+
 	public void specialRequest(String specialRequest) {
 		elementSendKeys(anyOtherRequest, specialRequest);
 		elementClick(btnNext2);
 	}
-	
-	
-	public void cardDetails(String cardType, io.cucumber.datatable.DataTable dataTable) {
+
+	public void cardPayment() {
 		elementClick(btnPayOptions);
-	
+	}
+
+	public void cardDetails(String cardType, io.cucumber.datatable.DataTable dataTable) {
+
+	}
+
+	public void submit() {
+		elementClick(submitBtn);
+	}
+
+	public void nextBtnAfterSplReq() {
+		elementClick(splReqNextBtn);
+	}
+
+	public void nextBtnWithoutGst() {
+		elementClick(btnNext);
+	}
+
+	public String paymentErrorMsg() {
+		String paymentTypeErrorMsg = elementGetText(paymentTypeError);
+		return paymentTypeErrorMsg;
+	}
+
+	public String cardTypeError() {
+		String cardTypeErrorMsg = elementGetText(cardTypeError);
+		return cardTypeErrorMsg;
+	}
+
+	public String cardNoError() {
+		String cardNoErrorMsg = elementGetText(cardNoError);
+		return cardNoErrorMsg;
+	}
+
+	public String cardNameError() {
+		String cardNameErrorMsg = elementGetText(cardNameError);
+		return cardNameErrorMsg;
+
+	}
+
+	public String cardMonthError() {
+		String cardMonthErrorMsg = elementGetText(cardMonthError);
+		return cardMonthErrorMsg;
+
+	}
+
+	public String cardCvvError() {
+		String cardCvvErrorMsg = elementGetText(cardCvvError);
+		return cardCvvErrorMsg;
+	}
+
+	public void upiId(String upiId) {
+		elementClick(upiClick);
+		elementSendKeys(upiTextBox, upiId);
+	}
+
+	public void upiClick() {
+		elementClick(upiClick);
+	}
+
+	public String invalidUpi() {
+		String invalidUpi = elementGetText(invalidUpiError);
+		return invalidUpi;
 	}
 
 }
