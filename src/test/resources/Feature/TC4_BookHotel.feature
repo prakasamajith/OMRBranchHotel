@@ -1,6 +1,6 @@
- @Book
-Feature: Verifying OMR Branch Hotel Book Hotel Module
 
+Feature: Verifying OMR Branch Hotel Book Hotel Module
+ @Book
   Scenario Outline: Book hotel including GST-Card(credit card)-With special request
     Given User is on the OMR Branch hotel page
     When User login "<userName>" and "<password>"

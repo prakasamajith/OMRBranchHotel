@@ -11,7 +11,7 @@ import io.cucumber.junit.CucumberOptions;
 import io.cucumber.junit.CucumberOptions.SnippetType;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(tags = ("@ChangeBook"), dryRun = !true,
+@CucumberOptions(tags = ("@CancelBooking"), dryRun = !true,
 plugin = { "pretty","json:target//output.json","rerun:src/test/resources/rerun.txt"},
 stepNotifications = true, snippets = SnippetType.CAMELCASE,
 		features = "src\\test\\resources",

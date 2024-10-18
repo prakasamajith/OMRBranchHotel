@@ -74,7 +74,7 @@ $(document).ready(function() {
   <tbody>
     <tr class="info">
       <td>OMR Branch Hotel Project</td>
-      <td>16 Oct 2024, 23:38</td>
+      <td>17 Oct 2024, 12:36</td>
     </tr>
   </tbody>
 </table>
@@ -138,7 +138,7 @@ $(document).ready(function() {
           <td  class="failed"    >1</td>
           <td class="total">1</td>
 
-          <td class="duration" data-value="9697137200">9.697</td>
+          <td class="duration" data-value="15061664000">15.061</td>
           <td class="failed">Failed</td>
         </tr>
         </tbody>
@@ -191,7 +191,7 @@ $(document).ready(function() {
 </div>
 
 
-  <span class="lead-duration duration">9.697</span>
+  <span class="lead-duration duration">15.061</span>
 
 
   <span data-toggle="collapse" class=" collapsable-control" data-target="#element-1">
@@ -229,7 +229,7 @@ $(document).ready(function() {
             <span class="keyword indention">Before</span>
               <span class="location name">com.omrbranch.stepdefinition.HooksClass.beforeScenario()</span>
 
-  <span class="lead-duration duration">3.618</span>
+  <span class="lead-duration duration">2.556</span>
 
           </div>
 
@@ -266,7 +266,7 @@ $(document).ready(function() {
   <span class="keyword indention">Given</span>
   <span class="name">User is on the OMR Branch hotel page</span>
 
-  <span class="lead-duration duration">0.001</span>
+  <span class="lead-duration duration">0.000</span>
 
 </div>
 
@@ -293,7 +293,7 @@ $(document).ready(function() {
   <span class="keyword indention">When</span>
   <span class="name">User login <span class="argument">&quot;ajithprakasam@gmail.com&quot;</span> and <span class="argument">&quot;Prakasam@77&quot;</span></span>
 
-  <span class="lead-duration duration">7.305</span>
+  <span class="lead-duration duration">11.886</span>
 
 </div>
 
@@ -320,7 +320,7 @@ $(document).ready(function() {
   <span class="keyword indention">Then</span>
   <span class="name">User should verify success message after login <span class="argument">&quot;Welcome Prakasam&quot;</span></span>
 
-  <span class="lead-duration duration">0.108</span>
+  <span class="lead-duration duration">0.121</span>
 
 </div>
 
@@ -347,7 +347,7 @@ $(document).ready(function() {
   <span class="keyword indention">When</span>
   <span class="name">User navigate to My Booking page</span>
 
-  <span class="lead-duration duration">1.726</span>
+  <span class="lead-duration duration">2.119</span>
 
 </div>
 
@@ -374,7 +374,7 @@ $(document).ready(function() {
   <span class="keyword indention">Then</span>
   <span class="name">User should verify after navigate to My Booking page success message as <span class="argument">&quot;Bookings&quot;</span></span>
 
-  <span class="lead-duration duration">0.096</span>
+  <span class="lead-duration duration">0.126</span>
 
 </div>
 
@@ -399,9 +399,9 @@ $(document).ready(function() {
 
 <div class="brief step-name-When passed">
   <span class="keyword indention">When</span>
-  <span class="name">User search the Order ID <span class="argument">&quot;EYZAS50390&quot;</span></span>
+  <span class="name">User search the Order ID <span class="argument">&quot;CLZZF67235&quot;</span></span>
 
-  <span class="lead-duration duration">0.374</span>
+  <span class="lead-duration duration">0.603</span>
 
 </div>
 
@@ -428,7 +428,7 @@ $(document).ready(function() {
   <span class="keyword indention">Then</span>
   <span class="name">User should verify same booked Order ID is present or not</span>
 
-  <span class="lead-duration duration">0.084</span>
+  <span class="lead-duration duration">0.203</span>
 
 </div>
 
@@ -440,12 +440,38 @@ $(document).ready(function() {
   <div class="inner-level">
     <div class="message indention">
       <div data-toggle="collapse" class=" collapsable-control" data-target="#msg-4">
-          <a>java.lang.NullPointerException:</a>
+          <a>org.openqa.selenium.StaleElementReferenceException:</a>
       </div>
       <div id="msg-4" class="collapse collapsable-details  in ">
-        <pre>java.lang.NullPointerException: Cannot invoke &quot;java.lang.CharSequence.toString()&quot; because &quot;s&quot; is null
-	at java.base/java.lang.String.contains(String.java:3023)
-	at com.omrbranch.stepdefinition.TC5_ChangeBookingStep.userShouldVerifySameBookedOrderIDIsPresentOrNot(TC5_ChangeBookingStep.java:38)
+        <pre>org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found in the current frame
+  (Session info: chrome=130.0.6723.58)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.23.1', revision: '656257d8e9'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [6ddc23ffffa832bc09629f0766f89f39, getElementText {id=f.A6AE64F5AA8090545E5231723C0A2E93.d.CB61CFE7413097C2BA57BE22C8544410.e.462}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 130.0.6723.58, chrome: {chromedriverVersion: 130.0.6723.58 (3a50e012e4c9..., userDataDir: C:\Users\THANGA~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55570}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55570/devtoo..., se:cdpVersion: 130.0.6723.58, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (6ddc23ffffa832bc09629f0766f89f39)] -&gt; xpath: (//span[contains(text(),'#')])[2]]
+Session ID: 6ddc23ffffa832bc09629f0766f89f39
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.getText(RemoteWebElement.java:191)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy21.getText(Unknown Source)
+	at com.omrbranch.baseclass.BaseClass.elementGetText(BaseClass.java:258)
+	at com.omrbranch.pages.MyBookingPage.orderIdVerify(MyBookingPage.java:144)
+	at com.omrbranch.stepdefinition.TC5_ChangeBookingStep.userShouldVerifySameBookedOrderIDIsPresentOrNot(TC5_ChangeBookingStep.java:35)
 	at ✽.User should verify same booked Order ID is present or not(file:///C:/Users/Thangapandiyan%20P/eclipse-workspace/OMRBranchHotelProject/src/test/resources/Feature/TC5_ChangeBooking.feature:255)
 </pre>
       </div>
@@ -542,7 +568,7 @@ $(document).ready(function() {
             <span class="keyword indention">After</span>
               <span class="location name">com.omrbranch.stepdefinition.HooksClass.afterScenario(io.cucumber.java.Scenario)</span>
 
-  <span class="lead-duration duration">0.229</span>
+  <span class="lead-duration duration">0.260</span>
 
           </div>
 
@@ -555,7 +581,7 @@ $(document).ready(function() {
   <div class="embedding indention">
     <div data-toggle="collapse" data-target="#embedding-6" class="collapsable-control">
       <a>Every Scenario</a>
-      <a href="embeddings/embedding_245629831.png" download target="_blank">
+      <a href="embeddings/embedding_-847607989.png" download target="_blank">
         <span class="download-button glyphicon glyphicon-download-alt"></span>
       </a>
     </div>

@@ -251,14 +251,14 @@ Feature: Verifying Change Booking Module
     Then User should verify success message after login "Welcome Prakasam"
     When User navigate to My Booking page
     Then User should verify after navigate to My Booking page success message as "Bookings"
-    When User search the Order ID "#YPJCO46488"
+    When User search the Order ID "CLZZF67235"
     Then User should verify same booked Order ID is present or not
     When User edit the Check-in Date "<Modify Date>"
     Then User should verify after modify check-in date success message "Booking updated successfully"
 
     Examples: 
-      | userName                | password    | Modify Date |
-      | ajithprakasam@gmail.com | Prakasam@77 | 2024-11-27  |
+      | userName                | password    | Modify Date | 
+      | ajithprakasam@gmail.com | Prakasam@77 | 2024-11-27  | 
 
   Scenario Outline: Modify Check-in Date for first displayed Order ID
     Given User is on the OMR Branch hotel page

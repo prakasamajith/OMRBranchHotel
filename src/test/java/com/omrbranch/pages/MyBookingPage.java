@@ -134,14 +134,16 @@ public class MyBookingPage extends BaseClass {
 		return booking;
 	}
 
-	public void searchOrderId() {
+	public void searchOrderId() throws InterruptedException {
 		String orderIdNumber = BookingConfirmationPage.saveOrderId;
 		elementSendKeysEnter(searchTextBox, orderIdNumber);
+		Thread.sleep(2000);
 	}
 
 	public String orderIdVerify() {
 		String bookedOrderId = elementGetText(bookedOrderNo);
-		return bookedOrderId;
+		String bookedOrder = bookedOrderId.substring(1, 11);
+		return bookedOrder;
 	}
 
 	public String bookedHotelNameVerify() {
