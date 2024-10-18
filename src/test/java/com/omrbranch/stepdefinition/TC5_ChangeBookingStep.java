@@ -3,6 +3,7 @@ package com.omrbranch.stepdefinition;
 import org.junit.Assert;
 
 import com.omrbranch.pagemanager.PageObjectManager;
+import com.omrbranch.pages.BookingConfirmationPage;
 import com.omrbranch.pages.SelectHotelPage;
 
 import io.cucumber.java.en.Then;
@@ -25,7 +26,7 @@ public class TC5_ChangeBookingStep {
 	}
 
 	@When("User search the Order ID")
-	public void userSearchTheOrderID() throws InterruptedException {
+	public void userSearchTheOrderID(){
 		pom.getMyBookingPage().searchOrderId();
 
 	}
@@ -33,8 +34,8 @@ public class TC5_ChangeBookingStep {
 	@Then("User should verify same booked Order ID is present or not")
 	public void userShouldVerifySameBookedOrderIDIsPresentOrNot() {
 		String searchOrderId = pom.getMyBookingPage().orderIdVerify();
-		String orderId = pom.getBookingConfirmationPage().getOrderId();
-		boolean contains = searchOrderId.contains(orderId);
+		String orderIdNumber = BookingConfirmationPage.saveOrderId;
+		boolean contains = searchOrderId.contains(orderIdNumber);
 		Assert.assertTrue(contains);
 		System.out.println(contains);
 	}
@@ -70,7 +71,7 @@ public class TC5_ChangeBookingStep {
 
 	@When("User search the Order ID {string}")
 	public void userSearchTheOrderID(String id) {
-		pom.getMyBookingPage().searchNewOrderId(id);
+		pom.getMyBookingPage().searchOrderId();
 	}
 
 	@When("User edit the Check-in Date for the first displayed Order ID {string}")

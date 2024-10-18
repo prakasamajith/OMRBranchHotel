@@ -275,7 +275,8 @@ public class BookHotelPage extends BaseClass {
 		return txtHotelprice;
 	}
 
-	public void guestDetails(String txtsalutation, String firstName, String lastName, String mobile, String email) {
+	public void guestDetails(String txtsalutation, String firstName, String lastName, String mobile, String email) throws InterruptedException {
+		Thread.sleep(1000);
 		elementClick(btnMyself);
 		elementSendKeys(salutation, txtsalutation);
 		elementSendKeys(txtFirstname, firstName);

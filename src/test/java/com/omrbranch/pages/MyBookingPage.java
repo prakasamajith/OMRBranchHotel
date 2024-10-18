@@ -55,10 +55,10 @@ public class MyBookingPage extends BaseClass {
 	@FindBy(xpath = "//strong[@class='total-prize']")
 	private WebElement price2;
 
-	@FindBy(xpath = "(//a[text()='Cancel'])[1]")
-	private WebElement btnCancel;
+	@FindBy(xpath = "//a[text()='Cancel']")
+	private List<WebElement> btnCancel;
 
-	@FindBy(xpath = "//li[text()='Your booking cancelled successfully']")
+	@FindBy(xpath = "//li[@class=\"alertMsg\"]")
 	private WebElement cancelBooking;
 
 	@FindBy(xpath = "//div[@id='bookinglist']//button[text()='Edit']")
@@ -120,7 +120,7 @@ public class MyBookingPage extends BaseClass {
 		return price2;
 	}
 
-	public WebElement getBtnCancel() {
+	public List<WebElement> getBtnCancel() {
 		return btnCancel;
 	}
 
@@ -134,10 +134,10 @@ public class MyBookingPage extends BaseClass {
 		return booking;
 	}
 
-	public void searchOrderId() throws InterruptedException {
+	public void searchOrderId() {
 		String orderIdNumber = BookingConfirmationPage.saveOrderId;
-		elementSendKeysEnter(searchTextBox, orderIdNumber);
-		Thread.sleep(2000);
+		elementSendKeys(searchTextBox, orderIdNumber);
+		
 	}
 
 	public String orderIdVerify() {
@@ -189,5 +189,26 @@ public class MyBookingPage extends BaseClass {
 		elementClear(editCheckin);
 		elementSendKeys(editCheckin, modifyCheckInDate);
 		elementClick(btnConfirm);
+	}
+	
+	public void cancelOrder() throws InterruptedException {
+		Thread.sleep(1000);
+		int size = btnCancel.size();
+		WebElement firstCancelBtn = btnCancel.get(0);
+		elementClick(firstCancelBtn);
+		Thread.sleep(1000);
+		acceptAlert();
+	}
+	public String verifyCancelMsgText() {
+		String cancelBookingMsgTxt = elementGetText(cancelBooking);
+		return cancelBookingMsgTxt;
+	}
+	public void existingOrderCancel() throws InterruptedException {
+		Thread.sleep(1000);
+		int size = btnCancel.size();
+		WebElement thirdExistingCancel = btnCancel.get(3);
+		elementClear(thirdExistingCancel);
+		Thread.sleep(1000);
+		acceptAlert();
 	}
 }

@@ -1,6 +1,6 @@
 Feature: Verifying Cancel Booking Module
 
-  @CancelBooking
+  
   Scenario Outline: Cancel the Created Order Id - Book hotel by card (credit card)
     Given User is on the OMR Branch hotel page
     When User login "<userName>" and "<password>"
@@ -85,6 +85,7 @@ Feature: Verifying Cancel Booking Module
     Then User should verify after select success message "Book Hotel"
     When User add Guest Details "<Select Salutation>","<First Name>","<Last Name>","<Mobile No.>" and "<Email>"
     And User add GST Details "<Enter Registration No.>","<Enter Company Name>" and "<Enter Company Address>"
+     And User should not Enter any special request
     And User enter payment details, procced with Card Type "<Card Type>"
       | Select Card | Card No          | Card Name | Month | Year | CVV |
       | Visa        | 5555555555552223 | xxxxx     | July  | 2025 | 123 |
@@ -122,6 +123,8 @@ Feature: Verifying Cancel Booking Module
     And User select the last hotel and accept the alert
     Then User should verify after select success message "Book Hotel"
     When User add Guest Details "<Select Salutation>","<First Name>","<Last Name>","<Mobile No.>" and "<Email>"
+    And User proceed without GST details
+    And User should not Enter any special request
     And User enter payment details, procced with Card Type "<Card Type>"
       | Select Card | Card No          | Card Name | Month | Year | CVV |
       | Visa        | 5555555555552223 | xxxxx     | July  | 2025 | 123 |
@@ -160,6 +163,7 @@ Feature: Verifying Cancel Booking Module
     Then User should verify after select success message "Book Hotel"
     When User add Guest Details "<Select Salutation>","<First Name>","<Last Name>","<Mobile No.>" and "<Email>"
     And User add GST Details "<Enter Registration No.>","<Enter Company Name>" and "<Enter Company Address>"
+       And User should not Enter any special request
     And User enter upi details "<upiId>" and click submit
     And User should verify after hotel booking success message "Booking is Confirmed" and save the order ID
     Then User should verify same selected Hotel is booked or not
@@ -192,7 +196,8 @@ Feature: Verifying Cancel Booking Module
     And User select the last hotel and accept the alert
     Then User should verify after select success message "Book Hotel"
     When User add Guest Details "<Select Salutation>","<First Name>","<Last Name>","<Mobile No.>" and "<Email>"
-    And User add GST Details "<Enter Registration No.>","<Enter Company Name>" and "<Enter Company Address>"
+    And User proceed without GST details
+    And User should not Enter any special request
     And User enter upi details "<upiId>" and click submit
     And User should verify after hotel booking success message "Booking is Confirmed" and save the order ID
     Then User should verify same selected Hotel is booked or not
@@ -225,6 +230,7 @@ Feature: Verifying Cancel Booking Module
     And User select the last hotel and accept the alert
     Then User should verify after select success message "Book Hotel"
     When User add Guest Details "<Select Salutation>","<First Name>","<Last Name>","<Mobile No.>" and "<Email>"
+    And User proceed without GST details
     And User add Special Request "<Request>"
     And User enter upi details "<upiId>" and click submit
     And User should verify after hotel booking success message "Booking is Confirmed" and save the order ID
@@ -247,7 +253,7 @@ Feature: Verifying Cancel Booking Module
     Examples: 
       | userName                | password    | state      | city    | roomType | checkIn    | check-out  | No of Room | No of Adults | No of Childs | Select Salutation | First Name | Last Name | Mobile No. | Email                   | Request       | upiId                | Modify Date |
       | ajithprakasam@gmail.com | Prakasam@77 | Tamil Nadu | Chennai | Standard | 2024-11-11 | 2024-11-14 |          2 |            2 |            2 | Mr                | Prakasam   | Manickam  | 9600809646 | ajithprakasam@gmail.com | Valet Parking | seleniumtraining@vbc | 2024-11-19  |
-
+@CancelBooking
   Scenario Outline: Cancel the existing Order ID
     Given User is on the OMR Branch hotel page
     When User login "<userName>" and "<password>"

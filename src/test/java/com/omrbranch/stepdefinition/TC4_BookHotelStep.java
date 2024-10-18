@@ -19,7 +19,7 @@ public class TC4_BookHotelStep extends BaseClass {
 
 	@When("User add Guest Details {string},{string},{string},{string} and {string}")
 	public void userAddGuestDetailsAnd(String txtsalutation, String firstName, String lastName, String mobile,
-			String email) {
+			String email) throws InterruptedException {
 		pom.getBookHotelPage().guestDetails(txtsalutation, firstName, lastName, mobile, email);
 	}
 
